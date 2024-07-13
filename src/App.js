@@ -5,7 +5,7 @@ import Navbar from "./components/Navbar";
 import TextForm from "./components/TextForm";
 import Alert from "./components/Alert";
 
-// import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 
 function App() {
@@ -28,12 +28,12 @@ function App() {
       setMode("dark");
       document.body.style.backgroundColor = "#042743";
       showAlert("Dark mode has been enabled", "success");
-      document.title = "TextUtils - Dark Mode";
+      // document.title = "TextUtils - Dark Mode";
     } else {
       setMode("light");
       document.body.style.backgroundColor = "white";
       showAlert("Light mode has been enabled", "success");
-      document.title = "TextUtils - Light Mode";
+      // document.title = "TextUtils - Light Mode";
     }
 
     // makes the tab title reappear again and again
@@ -61,7 +61,7 @@ function App() {
   // };
   return (
     <>
-    {/* <Router> */}
+    <Router>
     <Navbar
         title="Skin Media"
         aboutText="About Us"
@@ -72,20 +72,20 @@ function App() {
       <Alert alert={alert} />
 
       <div className="container my-3">
-          {/* <Routes> */}
+          <Routes>
             {/* React does partial matching in routes so muct used exact to make sure react direct it to the exam path given.
              users -> component 1
              users/home -> component 2 */}
            
-            {/* <Route exact path="/" element={<TextForm showAlert={showAlert} heading="Enter the text to analyse below:" mode={mode}/>}/> */}
-            {/* <Route exact path="/about" element={<About/>}/> */}
+            <Route  exact path="/" element={<TextForm showAlert={showAlert} heading="Try TextUtils - Word Counter | Character Counter | Lowercase to Uppercase | Uppercase to Lowercase | Remove Extra Spaces" mode={mode}/>}/>
+            <Route exact path="/about" element={<About mode={mode}/>}/>
 
-          {/* </Routes>           */}
+          </Routes>          
 
-          <TextForm showAlert={showAlert} heading="Enter the text to analyse below:" mode={mode}/>
+          {/* <TextForm showAlert={showAlert} heading="Enter the text to analyse below:" mode={mode}/> */}
       </div>
 
-    {/* </Router> */}
+    </Router>
       
 
     
