@@ -5,6 +5,7 @@
 
 import React, { useState } from "react";
 
+
 export default function TextForm(props) {
   const handleUpClick = () => {
     let newText = text.toUpperCase();
@@ -28,9 +29,7 @@ export default function TextForm(props) {
   };
 
   const handleCopy = () => {
-    var text = document.getElementById("myBox");
-    text.select();
-    navigator.clipboard.writeText(text.value);
+    navigator.clipboard.writeText(text);
     document.getSelection().removeAllRanges();
     props.showAlert("Text copied to clipboard!", "success")
 
@@ -98,8 +97,8 @@ export default function TextForm(props) {
 
       <div className="container" style={{color: props.mode === 'dark' ? 'white' : '#042743'}}>
         <h1 className="my-2">Your Text Summary</h1>
-        <p>{text.split(" ").filter((element)=>{return element !== 0}).length} words, {text.length} characters</p>
-        <p>{0.008 * text.split(" ").filter((element)=>{return element !== 0}).length} Minutes to read </p>
+        <p>{text.split(/\s+/).filter((element)=>{return element != 0}).length} words, {text.length} characters</p>
+        <p>{0.008 * text.split(" ").filter((element)=>{return element != 0}).length} Minutes to read </p>
         <h1>Preview</h1>
         <p>{text.length>0 ? text: 'Enter something in the textfield to preview it here.'}</p>
       </div>
